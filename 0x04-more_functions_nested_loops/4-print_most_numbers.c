@@ -2,11 +2,11 @@
 /**
  * print_most_numbers - print num except 2 and 4
  *
- * return: void
+ * return:void
  */
 void print_most_numbers(void)
 {
-	char C;
+	char c;
 
 	for (c = '0'; c <= '9'; c++)
 	{
