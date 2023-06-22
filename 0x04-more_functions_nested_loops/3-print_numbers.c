@@ -2,17 +2,15 @@
 /**
  * print_numbers - print 0 - 9
  *                 only using _putchar twice
- *@num: int
  *
- * Return: Always 0 (Success)
+ * Return void
  */
 void print_numbers(void)
 {
-	int num = 0;
-
-	do {
-		_putchar (num + 48);
-		num++;
-	} while (num >= 0 && num <= 9);
-	_putchar ("\n");
+	char c;
+	for (c = 0; c <= 9; c++)
+{
+	_putchar (c);
+}
+_putchar ("\n");
 }
