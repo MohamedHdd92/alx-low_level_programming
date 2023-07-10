@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "main.h"
+
 /**
  * _atoi - converts a string to an integer
  * @s: string to be converted
+ *
  * Return: the int converted from the string
  */
 int _atoi(char *s)
@@ -37,6 +39,7 @@ int _atoi(char *s)
 		}
 		i++;
 	}
+
 	if (f == 0)
 		return (0);
 
@@ -63,7 +66,8 @@ int main(int argc, char *argv[])
 	num1 = _atoi(argv[1]);
 	num2 = _atoi(argv[2]);
 	result = num1 * num2;
-	printf("%d/n", result);
+
+	printf("%d\n", result);
 
 	return (0);
 }
