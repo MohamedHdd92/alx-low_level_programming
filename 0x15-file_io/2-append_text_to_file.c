@@ -1,41 +1,34 @@
 #include "main.h"
 
 /**
- * _strlen - returnss the length of a sstring
- * @s: the string whose length to check
- *
- * Return: integer length of string
- */
-int _strlen(char *s)
-{
-	int i = 0;
-
-	if (!s)
-		return (0);
-
-	while (*s++)
-		i++;
-	return (i);
-}
-/**
- * append_text_to_file - appends text at the end of a file.
+ * append_text_to_file - Appends text at the end of a file.
  * @filename: A pointer to the name of the file.
  * @text_content: The string to add to the end of the file.
  *
- * Return: 1 on success and -1 on failure
+ * Return: If the function fails or filename is NULL - -1.
+ *         If the file does not exist the user lacks write permissions - -1.
+ *         Otherwise - 1.
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd;
-	ssize_t bytes = 0, len = _strlen(text_content);
+	int o, w, len = 0;
 
-	if (!filename)
+	if (filename == NULL)
 		return (-1);
-	fd = open(filename, O_WRONLY | O_APPEND);
-	if (fd == -1)
+
+	if (text_content != NULL)
+	{
+		for (len = 0; text_content[len];)
+			len++;
+	}
+
+	o = open(filename, O_WRONLY | O_APPEND);
+	w = write(o, text_content, len);
+
+	if (o == -1 || w == -1)
 		return (-1);
-	if (len)
-		bytes = write(fd, text_content, len);
-	colse(fd);
-	return (bytes == len ? 1 : -1);
+
+	close(o);
+
+	return (1);
 }
